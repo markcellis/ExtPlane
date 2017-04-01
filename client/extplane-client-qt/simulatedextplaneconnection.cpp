@@ -63,13 +63,13 @@ ClientDataRef *SimulatedExtPlaneConnection::createDataRef(QString name, double a
     } else if(name=="sim/cockpit2/gauges/indicators/heading_AHARS_deg_mag_pilot") {
         simRef = new SimulatedDataRef(this, 0, 360, 20.0, false, 0, name);
     } else if(name=="sim/cockpit2/radios/actuators/hsi_obs_deg_mag_pilot") {
-        simRef = new SimulatedDataRef(this, -360, 0, 10.0, false, 0, name);
+        simRef = new SimulatedDataRef(this, 0, 360, 3, false, 0, name);
     } else if(name=="sim/cockpit2/radios/indicators/hsi_hdef_dots_pilot") {
-        simRef = new SimulatedDataRef(this, -4, 4, 10.0, false, 0, name);
+        simRef = new SimulatedDataRef(this, -2.5, 2.5, 10.0, false, 0, name);
     } else if(name=="sim/cockpit2/radios/indicators/hsi_vdef_dots_pilot") {
-        simRef = new SimulatedDataRef(this, -10, 10, 1.0, false, 0, name);
+        simRef = new SimulatedDataRef(this, -2.5, 2.5, 10.0, false, 0, name);
     } else if(name=="sim/cockpit2/autopilot/heading_dial_deg_mag_pilot") {
-        simRef = new SimulatedDataRef(this, -360, 360, 30.0, false, 0, name);
+        simRef = new SimulatedDataRef(this, 0, 360, 3.0, false, 0, name);
     } else if(name=="sim/cockpit2/engine/indicators/engine_speed_rpm") {
         simRef = new SimulatedDataRef(this, 0, 10000, 5.0, false, 4, name);
     } else if(name=="sim/aircraft/view/acf_tailnum") {
@@ -90,6 +90,30 @@ ClientDataRef *SimulatedExtPlaneConnection::createDataRef(QString name, double a
         simRef = new SimulatedDataRef(this, 1.0, 2.2, 10.0, false, 8, name); // X-Plane seems to return 8 engines no matter what
     } else if(name=="sim/cockpit2/engine/indicators/EGT_deg_C") {
         simRef = new SimulatedDataRef(this, 0.0, 800, 100.0, false, 8, name); // X-Plane seems to return 8 engines no matter what
+    } else if(name=="sim/cockpit2/radios/indicators/hsi_display_vertical_pilot") {
+        simRef = new SimulatedDataRef(this, 1, 1, 1.0, true, 0, name);
+    } else if(name=="sim/cockpit2/radios/indicators/hsi_display_horizontal_pilot") {
+        simRef = new SimulatedDataRef(this, 1, 1, 1.0, true, 0, name);
+    } else if(name=="sim/cockpit2/radios/indicators/hsi_flag_glideslope_pilot") {
+        simRef = new SimulatedDataRef(this, 0, 0, 1.0, true, 0, name);
+    } else if(name=="sim/cockpit/autopilot/airspeed") {
+        simRef = new SimulatedDataRef(this, 0, 300, 1.0, false, 0, name);
+    } else if(name=="sim/cockpit/autopilot/altitude") {
+        simRef = new SimulatedDataRef(this, 0, 34000, 34, false, 0, name);
+    } else if(name=="sim/cockpit/autopilot/vertical_velocity") {
+        simRef = new SimulatedDataRef(this, -2000, 2000, 40, false, 0, name);
+    } else if(name=="sim/cockpit/misc/barometer_setting") {
+        simRef = new SimulatedDataRef(this, 25.69, 32.06, 100, false, 0, name);
+    } else if(name=="sim/physics/metric_press") {
+        simRef = new SimulatedDataRef(this, 0, 0, 1.0, true, 0, name);
+    } else if(name=="sim/cockpit2/radios/indicators/hsi_dme_distance_nm_pilot") {
+        simRef = new SimulatedDataRef(this, 0, 200, 1000, false, 0, name);
+    } else if(name=="sim/cockpit2/radios/indicators/hsi_dme_speed_kts_pilot") {
+        simRef = new SimulatedDataRef(this, 0, 300, 10, false, 0, name);
+    } else if(name=="sim/cockpit/autopilot/autopilot_state") {
+        simRef = new SimulatedDataRef(this, -16000, 16000, 1, false, 0, name);
+    } else if(name=="sim/cockpit2/radios/actuators/HSI_source_select_pilot") {
+        simRef = new SimulatedDataRef(this, 0, 2, 5, true, 0, name);
     } else {
         // Fallback
         INFO << "the dataref " << name << "is not supported by simulation";
